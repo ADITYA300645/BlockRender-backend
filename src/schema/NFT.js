@@ -1,16 +1,30 @@
 const { default: mongoose } = require("mongoose");
 const accountSchema = require("./Account");
+const commentSchema = require("./Comment");
 const NftSchema = mongoose.Schema({
     IpfsUrl: { type: String, required: true },
-    //todo : Account Schema    \
     CurrentOwner: { type: mongoose.Schema.ObjectId, ref: "Account" },
     OwnersHistory: {
         type: [{ type: mongoose.Schema.ObjectId, ref: "Account" }],
     },
     CurrentPrice: { type: Number, required: true },
     PriceHistory: { type: [Number] },
-    likes: { type: [{ type: mongoose.Schema.ObjectId, ref: "Account" }] },
+    likes: [
+        {
+            accountId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Account",
+                unique: true,
+            },
+            date: {
+                type: Date,
+                default: Date.now,
+            },
+        },
+    ],
+    comment: [commentSchema],
     isListed: Boolean,
+
     // todo : make comments bidd system
 });
 module.exports = NftSchema;
