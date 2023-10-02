@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/home.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <title>Block Render</title>
+    </head>
+    <body>
+        <div class="front">
+            <div class="heading">
+                <h1>Todo</h1>
+                <div class="date">
+                    <div class="ddmmyy">day</div>
+                    <div>•</div>
+                    <div class="day">weekday</div>
+                    <div>•</div>
+                    <div class="time">00 : 00 : 00</div>
+                </div>
+            </div>
+        </div>
+        <div class="todo-wrapper">
+            <div class="input">
+                <div class="isDone"></div>
+                <div class="division"></div>
+                <input type="text" class="inputText" onsubmit="{addTodo()} " />
+            </div>
+            <div class="container"></div>
+        </div>
+        <script>
+            var date = new Date();
+            var ddmmyy = document.getElementsByClassName("ddmmyy");
+            var day = document.getElementsByClassName("day");
+            var time = document.getElementsByClassName("time");
+            ddmmyy[0].innerHTML = date.toLocaleString("default", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+            });
+            day[0].innerHTML = date.toLocaleString("default", {
+                weekday: "long",
+            });
+            time[0].innerHTML = date.toLocaleString("default", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+            });
+            setInterval(() => {
+                date = new Date();
+                time[0].innerHTML = date.toLocaleString("default", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit",
+                });
+            }, 1000);
+
+            var todos = document.getElementsByClassName("container");
+            var inputText =
+                document.getElementsByClassName("inputText")[0].value;
+            console.log(inputText);
+            var input = document
+                .getElementsByClassName("inputText")[0]
+                .addEventListener("keydown", (event) => {
+                    inputText =
+                        document.getElementsByClassName("inputText")[0].value;
+                    if (event.code == "Enter") {
+                        addTodo(inputText);
+                        document.getElementsByClassName("inputText")[0].value = "";
+                    }
+                });
+            function addTodo(text) {
+                console.log(text);
+                var tile = `<div class="tile" onclick="toogleStatus(this)">
+                                    <div class="isDone">
+                                    </div>
+                                    <div class="division"></div>
+                                    <div class="content">${text}</div>
+                                </div>`;
+                var todoTile = document.createElement("div");
+                todoTile.innerHTML = tile;
+                todos[0].prepend(todoTile);
+            }
+            function toogleStatus(element) {
+                // console.log(ddmmyy);
+                var dot = `<div class="done"></div>`;
+                var doneDot = document.createElement("div");
+                doneDot.innerHTML = dot;
+                if (element.children[0].children.length === 1) {
+                    element.children[0].innerHTML = "";
+                    element.children[2].classList.remove("completed");
+                } else {
+                    element.children[0].appendChild(doneDot);
+                    element.children[2].classList.add("completed");
+                }
+                console.log();
+                // element.appendChild(doneDot);
+            }
+        </script>
+    </body>
+</html>

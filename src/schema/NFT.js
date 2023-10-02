@@ -11,20 +11,15 @@ const NftSchema = mongoose.Schema({
     PriceHistory: { type: [Number] },
     likes: [
         {
-            accountId: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "Account",
-                unique: true,
-            },
-            date: {
-                type: Date,
-                default: Date.now,
-            },
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Account",
         },
     ],
     comment: [commentSchema],
+    isLiked: Boolean,
     isListed: Boolean,
 
     // todo : make comments bidd system
 });
+
 module.exports = NftSchema;

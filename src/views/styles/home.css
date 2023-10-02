@@ -1,0 +1,118 @@
+html {
+    font-family: "Sarala", sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+body {
+    margin: 0;
+}
+.front {
+    background: linear-gradient(
+        180deg,
+        #717de9 0%,
+        rgba(196, 0, 141, 0.42) 100%
+    );
+    width: 100vw;
+    height: 40vh;
+    display: flex;
+}
+.date {
+    color: white;
+    display: flex;
+}
+.date * {
+    padding: 0px 3px;
+}
+h1 {
+    color: white;
+    margin: 0;
+    font-size: 54px;
+}
+.heading {
+    margin-left: 10vw;
+    margin-top: 10vh;
+    margin-bottom: 0px;
+}
+.todo-wrapper {
+    position: relative;
+    top: -100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input {
+    border: none;
+    width: 74.6vw;
+    padding-left: 20px;
+    border-radius: 3px;
+    height: 50px;
+    font-size: x-large;
+    color: grey;
+}
+input:focus {
+    outline: none;
+}
+.input {
+    padding-left: 20px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius:  8px;
+    background-color: white;
+    width: 80vw;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.tile {
+    user-select: none;
+    width: 78vw;
+    padding-left: 20px;
+    margin-top: 5px;
+    height: 50px;
+    display: flex;
+    border-radius: 5px;
+    color: grey;
+    border: 0.5px solid rgb(227, 227, 227);
+    margin: 5px;
+    margin: 5px 0px;
+    align-items: center;
+}
+.isDone {
+    display: flex;
+    height: 20px;
+    width: 20px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.5s;
+    box-shadow: 0px 0px 0px 2px rgb(151, 145, 145),
+        0px 0px 0px 5px rgb(197, 197, 197);
+}
+.division {
+    margin-left: 20px;
+    width: 0.5px;
+    height: 70%;
+    background-color: rgb(151, 145, 145);
+}
+.completed{
+    text-decoration: solid;
+    text-decoration-line: line-through;
+}
+.done {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: rgb(151, 145, 145);
+}
+.content {
+    margin-left: 20px;
+}

@@ -15,7 +15,7 @@ router.post("/", async (req, res) => {
         isListed: false, // will just affect the showing in website
     });
     var nft = await nftRef.save();
-    await nft.populate("CurrentOwner");
+    await nft.populate({path:"CurrentOwner",select: '-tokens',});
     res.json({ nft });
 });
 
