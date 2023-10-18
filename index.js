@@ -11,6 +11,7 @@ const nft = require("./src/routes/nft/nft");
 const createNft = require("./src/routes/createNft/createNft");
 const home = require("./src/routes/home/home");
 const path = require("path");
+const pinata = require("./src/utils/pinata/pinata");
 
 app.use(express.json());
 app.use(cors());
@@ -26,6 +27,10 @@ app.use("/nft", nft);
 app.use("/create-nft", createNft);
 app.use("/home", home);
 
+app.get("/res", (req, res) => {
+    res.json({ status: "Success" });
+});
+
 app.get("/", (req, res) => {
     res.render("home", { message: "Block-Render" });
 });
@@ -36,8 +41,8 @@ async function startServer() {
         await Moralis.start({
             apiKey: apiKey,
         });
-        app.listen(3000, () => {
-            console.log("http://localhost:3000");
+        app.listen(8080, () => {
+            console.log("http://localhost:8080");
         });
     } catch (e) {
         console.log(e);

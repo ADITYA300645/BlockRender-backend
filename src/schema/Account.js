@@ -3,6 +3,7 @@ const { default: mongoose } = require("mongoose");
 const accountSchema = mongoose.Schema({
     AccountNo: { type: String, required: true, unique: true },
     Name: { type: String, required: true },
+    Email : {type: String, required: true , unique : true},
     AccountType: {
         type: String,
         enum: ["Admin", "worker", "common"],

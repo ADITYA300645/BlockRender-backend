@@ -2,6 +2,8 @@ const { default: mongoose } = require("mongoose");
 const accountSchema = require("./Account");
 const commentSchema = require("./Comment");
 const NftSchema = mongoose.Schema({
+    name: { type: String, required: true },
+    keyvalues : {},
     IpfsUrl: { type: String, required: true },
     CurrentOwner: { type: mongoose.Schema.ObjectId, ref: "Account" },
     OwnersHistory: {
